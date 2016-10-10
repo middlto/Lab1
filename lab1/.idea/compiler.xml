@@ -6,7 +6,7 @@
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
       <entry name="!?*.form" />
-	  change
+	  change change at C4
       <entry name="!?*.class" />
       <entry name="!?*.groovy" />
       <entry name="!?*.scala" />

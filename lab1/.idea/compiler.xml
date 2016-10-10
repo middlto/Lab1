@@ -6,6 +6,7 @@
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
       <entry name="!?*.form" />
+	  change at B2
 	  change
       <entry name="!?*.class" />
       <entry name="!?*.groovy" />

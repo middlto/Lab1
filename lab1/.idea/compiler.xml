@@ -6,7 +6,7 @@
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
       <entry name="!?*.form" />
-	  change
+	  change change at B1 and delete a line
       <entry name="!?*.class" />
       <entry name="!?*.groovy" />
       <entry name="!?*.scala" />

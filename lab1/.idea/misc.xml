@@ -2,6 +2,8 @@
 <project version="4">
 change at B2
   <component name="ClientPropertiesManager">
+  change at C4
+  
     <properties class="javax.swing.AbstractButton">
       <property name="hideActionText" class="java.lang.Boolean" />
     </properties>

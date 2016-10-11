@@ -21,23 +21,25 @@ public class Main {
             Matcher m = p.matcher(str);
             long start = System.nanoTime();    //起始计时
             if(isLegal(str)) {
-                pol.setEquation(str);
-                pol.expression();
+                pol.setEquation(str);   //设置表达式
+                pol.expression();   //处理表达式
             }
             else if(m.find() && isLegal(str, pol)){
                 str = str.replace(" ","").replace("\t","");
                 if(str.startsWith("!simplify")) {
-                    if (!pol.simplify(str))
+                    if (!pol.simplify(str))     //表达式求值
                         System.out.println("Variable doesn't exist.");
                 }
                 else if(str.startsWith("!d/d"))
-                    if (!pol.derivative(str))
+                    if (!pol.derivative(str))   //表达式求导
                         System.out.println("Variable doesn't exist.");
             }
             else
                 System.out.println("Error, illegal input.");
             long end = System.nanoTime();  //终止计时
-            System.out.println("start : " + start + " \nend : " + end + " \nrunning time : " + (end - start)/1000000.0 + " ms");
+            System.out.println("start : " + start);
+            System.out.println("end : " + end);
+            System.out.println("running time : " + (end - start)/1000000.0 + " ms");
         }
     }
 
@@ -267,13 +269,13 @@ class Polynomial{
      */
     private static int getExp(String key, String item){
         int exp = 0;
-        Pattern p = Pattern.compile("(?<=[^a-zA-Z]|^)" + key + "(\\^(\\d+))?(?=([+*-]|$))");     //加了第一个?<=
+        Pattern p = Pattern.compile("(?<=[^a-zA-Z]|^)" + key + "(\\^(\\d+))?(?=([+*-]|$))");
         Matcher m = p.matcher(item);
         while(m.find()){
             if(m.group(0).equals(key))
                 exp++;
             else
-                exp += Integer.parseInt(m.group(2));    //2改成3改成2
+                exp += Integer.parseInt(m.group(2));
         }
         return exp;
     }

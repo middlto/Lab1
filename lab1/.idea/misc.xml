@@ -41,6 +41,9 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="PDMPlugin">
+    <option name="skipTestSources" value="false" />
+  </component>
   <component name="ProjectKey">
     <option name="state" value="project://63537948-39a4-48a0-9c97-34259a0fa913" />
   </component>

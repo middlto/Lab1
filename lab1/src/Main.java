@@ -26,18 +26,18 @@ public final class Main {
      */
     public static void main(final String[] args)
             throws IOException {
-        BufferedReader br = new BufferedReader(
+        final BufferedReader br = new BufferedReader(
                 new InputStreamReader(System.in));
-        Polynomial pol = new Polynomial();
+        final Polynomial pol = new Polynomial();
         String str;
         while (true) {
             str = br.readLine();
             if (str.isEmpty()) {
                 continue;
             }
-            Pattern p = Pattern.compile("^\\s*!");
-            Matcher m = p.matcher(str);
-            long start = System.nanoTime();    //起始计时
+            final Pattern p = Pattern.compile("^\\s*!");
+            final Matcher m = p.matcher(str);
+            final long start = System.nanoTime();    //起始计时
             if (isLegal(str)) {
                 pol.setEquation(str);   //设置表达式
                 pol.expression();   //处理表达式
@@ -70,11 +70,11 @@ public final class Main {
      * @return 合法为true，不合法为false
      */
     private static boolean isLegal(final String s) {
-        Pattern p = Pattern.compile("^\\s*" +
-                "(([0-9]|[1-9][0-9]+)?\\s*([a-zA-Z]+\\s*)(\\^\\s*[1-9][0-9]*\\s*)?[\\+\\*-]\\s*|" +
-                "([0-9]|[1-9][0-9]+)\\s*[\\+\\*-]\\s*)*" +
-                "(([0-9]|[1-9][0-9]+)?\\s*([a-zA-Z]+\\s*)(\\^\\s*[1-9][0-9]*\\s*)?|" +
-                "([0-9]|[1-9][0-9]+)\\s*$)");
+        Pattern p = Pattern.compile("^\\s*"
+                + "(([0-9]|[1-9][0-9]+)?\\s*([a-zA-Z]+\\s*)(\\^\\s*[1-9][0-9]*\\s*)?[\\+\\*-]\\s*|"
+                + "([0-9]|[1-9][0-9]+)\\s*[\\+\\*-]\\s*)*"
+                + "(([0-9]|[1-9][0-9]+)?\\s*([a-zA-Z]+\\s*)(\\^\\s*[1-9][0-9]*\\s*)?|"
+                + "([0-9]|[1-9][0-9]+)\\s*$)");
         Matcher m = p.matcher(s);
         if (m.matches()) {
             return true;
@@ -92,10 +92,9 @@ public final class Main {
     private static boolean isLegal(final String s, final Polynomial p) {
         if (!p.set()) {
             return false;
-        }
-        else {
-            Pattern pattern1 = Pattern.compile("^\\s*!\\s*simplify\\s*(\\s[a-zA-Z]+\\s*=\\s*-?\\s*([0-9]|[1-9][0-9]+)" +
-                    "(\\.[0-9]+)?\\s*)*$");
+        } else {
+            Pattern pattern1 = Pattern.compile("^\\s*!\\s*simplify\\s*(\\s[a-zA-Z]+\\s*=\\s*-?\\s*([0-9]|[1-9][0-9]+)"
+                    + "(\\.[0-9]+)?\\s*)*$");
             Pattern pattern2 = Pattern.compile("^\\s*!\\s*d\\s*/\\s*d\\s*[a-zA-Z]+\\s*$");
             Matcher matcher1 = pattern1.matcher(s);
             Matcher matcher2 = pattern2.matcher(s);
@@ -167,7 +166,7 @@ class Polynomial {
      *
      * @param s 表达式输入
      */
-    public void setEquation(String s) {
+    public void setEquation(final String s) {
         equation = s;
         isSet = true;
     }
@@ -189,7 +188,7 @@ class Polynomial {
      */
     public void expression() {
         String[] aryOfItem = equation.replace(" ", "").replace("\t", "").replace("-", "+-").split("\\+");
-        int numberOfItem = aryOfItem.length;
+        final int numberOfItem = aryOfItem.length;
         list = new Cell[numberOfItem];
         String key = "x";
         for (int i = 0; i < numberOfItem; i++) {
@@ -215,8 +214,8 @@ class Polynomial {
      * @param key  制表基变量
      * @param c    数据表
      */
-    private static void makeTable(String item, String key, Cell[] c) {
-        int exp = 0;
+    private static void makeTable(final String item, final String key, final Cell[] c) {
+        int exp;
         BigDecimal cofN = new BigDecimal(1);
         String cofX = "";
 
@@ -242,7 +241,8 @@ class Polynomial {
         while (m.find()) {
             String inItem = m.group(1);
             if (!inItem.equals(key)) {
-                Pattern p1 = Pattern.compile("(?<=[^a-zA-Z]|^)" + inItem + "(?=[^a-zA-Z]|$)");   //\\b改为?<= ?=
+                Pattern p1 = Pattern.compile("(?<=[^a-zA-Z]|^)" + inItem
+                        + "(?=[^a-zA-Z]|$)");
                 Matcher m1 = p1.matcher(cofX);
                 if (!m1.find()) {
                     int expX = 0;
@@ -286,11 +286,11 @@ class Polynomial {
      * @param numberOfItem 项数
      * @return 新字符串
      */
-    private static String getNewEquation(String key, Cell[] list, int numberOfItem) {
+    private static String getNewEquation(final String key, final Cell[] list, final int numberOfItem) {
         String newEquation = "";
-        BigDecimal zero = new BigDecimal(0);
-        BigDecimal one = new BigDecimal(1);
-        BigDecimal minusOne = new BigDecimal(-1);
+        final BigDecimal zero = new BigDecimal(0);
+        final BigDecimal one = new BigDecimal(1);
+        final BigDecimal minusOne = new BigDecimal(-1);
         for (int i = 0; i < numberOfItem; i++) {
             if (list[i].exp == -1) {
                 break;
@@ -310,12 +310,14 @@ class Polynomial {
             } else {
                 continue;
             }
-            if (!list[i].cofN.equals(one) && !list[i].cofN.equals(minusOne) && !list[i].cofX.isEmpty()) {
+            if (!list[i].cofN.equals(one) && !list[i].cofN.equals(minusOne)
+                    && !list[i].cofX.isEmpty()) {
                 newEquation += '*';
             }
             newEquation += list[i].cofX;
             if (list[i].exp != 0
-                    && (!list[i].cofX.isEmpty() || !list[i].cofN.equals(one) && !list[i].cofN.equals(minusOne))) {
+                    && (!list[i].cofX.isEmpty() || !list[i].cofN.equals(one)
+                    && !list[i].cofN.equals(minusOne))) {
                 newEquation += "*";
             }
             if (list[i].exp == 1) {
@@ -339,7 +341,7 @@ class Polynomial {
      * @param item 该项
      * @return 指数
      */
-    private static int getExp(String key, String item) {
+    private static int getExp(final String key, final String item) {
         int exp = 0;
         Pattern p = Pattern.compile("(?<=[^a-zA-Z]|^)" + key + "(\\^(\\d+))?(?=([+*-]|$))");
         Matcher m = p.matcher(item);
@@ -353,24 +355,24 @@ class Polynomial {
         return exp;
     }
 
-    /**
+    /**.
      * 化简函数
      *
      * @param command 命令
      * @return 命令中包含不存在的变量则返回false，否则返回true
      */
-    public boolean simplify(String command) {
-        command = command.replace("!simplify", "");
+    public boolean simplify(final String command) {
+        String newCommand = command.replace("!simplify", "");
         String tempEquation = equation;
         Pattern p = Pattern.compile("(?<=(^|\\d))[a-zA-Z]+(?==)");
-        Matcher m = p.matcher(command);
+        Matcher m = p.matcher(newCommand);
 
         //替换变量
         while (m.find()) {
             if (isExist(m.group(0), tempEquation)) {
                 String tmpa = m.group(0);
                 Pattern p1 = Pattern.compile("(?<=([0-9]|^)" + m.group(0) + "=)-?(\\d+)(\\.\\d+)?(?=[a-zA-Z]|$)");
-                Matcher m1 = p1.matcher(command);
+                Matcher m1 = p1.matcher(newCommand);
                 if (m1.find()) {
                     String tmpb = m1.group(0);
                     tempEquation = replace(m.group(0), m1.group(0), tempEquation);
@@ -389,7 +391,7 @@ class Polynomial {
                 aryOfItem[i] = tmpAry[i + 1];
             }
         }
-        Cell list[] = new Cell[aryOfItem.length];
+        Cell[] list = new Cell[aryOfItem.length];
         for (int i = 0; i < aryOfItem.length; i++) {
             list[i] = new Cell();
         }
@@ -405,14 +407,14 @@ class Polynomial {
         return true;
     }
 
-    /**
+    /**.
      * 判断命令中的变量是否存在于多项式中
      *
      * @param str      变量名
      * @param equation 多项式
      * @return 存在为true，不存在为false
      */
-    private static boolean isExist(String str, String equation) {
+    private static boolean isExist(final String str, final String equation) {
         Pattern p = Pattern.compile("(?<=([+*-]|^))" + str + "(?=([+*-^]|$))");
         Matcher m = p.matcher(equation);
         if (m.find()) {
@@ -428,25 +430,26 @@ class Polynomial {
      * @param equation 表达式
      * @return 表达式
      */
-    private static String replace(String var, String number, String equation) {
+    private static String replace(final String var, final String number, final String equation) {
+        String newEquation = equation;
         while (true) {
             Pattern p = Pattern.compile("(?<=[^a-zA-Z]|^)(" + var + ")(\\^(\\d+))");
-            Matcher m = p.matcher(equation);
+            Matcher m = p.matcher(newEquation);
             if (m.find()) {
                 int n = Integer.parseInt(m.group(3));
                 BigDecimal result = new BigDecimal(number);
                 result = result.pow(n);
-                equation = m.replaceFirst(String.valueOf(result));
+                newEquation = m.replaceFirst(String.valueOf(result));
             } else {
                 break;
             }
         }
         Pattern p = Pattern.compile("(?<=[^a-zA-Z]|^)" + var + "(?=([+*-]|$))");
-        Matcher m = p.matcher(equation);
+        Matcher m = p.matcher(newEquation);
         if (m.find()) {
-            equation = m.replaceAll(number);
+            newEquation = m.replaceAll(number);
         }
-        return equation;
+        return newEquation;
     }
 
     /**.
@@ -455,13 +458,13 @@ class Polynomial {
      * @param command 命令
      * @return 变量存在返回true，否则返回false
      */
-    public boolean derivative(String command) {
-        command = command.replace("!d/d", "");
-        String var = command;
+    public boolean derivative(final String command) {
+        String newCommand = command.replace("!d/d", "");
+        String var = newCommand;
         if (!isExist(var, equation)) {
             return false;
         }
-        String aryOfItem[] = equation.replace("-", "+-").split("\\+");
+        String[] aryOfItem = equation.replace("-", "+-").split("\\+");
         int numberOfItem = aryOfItem.length;
         list = new Cell[numberOfItem];
         for (int i = 0; i < numberOfItem; i++) {

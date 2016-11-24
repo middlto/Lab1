@@ -29,7 +29,7 @@ public void after() throws Exception {
 
 /** 
 * 
-* Method: setEquation(String s) 
+* Method: setEquation(final String s) 
 * 
 */ 
 @Test
@@ -59,7 +59,7 @@ public void testExpression() throws Exception {
 
 /** 
 * 
-* Method: simplify(String command) 
+* Method: simplify(final String command) 
 * 
 */ 
 @Test
@@ -76,7 +76,7 @@ public void testSimplify() throws Exception {
 
 /** 
 * 
-* Method: derivative(String command) 
+* Method: derivative(final String command) 
 * 
 */ 
 @Test
@@ -94,7 +94,7 @@ public void testDerivative() throws Exception {
 
 /** 
 * 
-* Method: makeTable(String item, String key, cell c[]) 
+* Method: makeTable(final String item, final String key, final Cell[] c) 
 * 
 */ 
 @Test
@@ -102,7 +102,7 @@ public void testMakeTable() throws Exception {
 //TODO: Test goes here... 
 /* 
 try { 
-   Method method = Polynomial.getClass().getMethod("makeTable", String.class, String.class, cell.class); 
+   Method method = Polynomial.getClass().getMethod("makeTable", final.class, final.class, final.class); 
    method.setAccessible(true); 
    method.invoke(<Object>, <Parameters>); 
 } catch(NoSuchMethodException e) { 
@@ -114,7 +114,7 @@ try {
 
 /** 
 * 
-* Method: getNewEquation(String key, cell list[], int numberOfItem) 
+* Method: getNewEquation(final String key, final Cell[] list, final int numberOfItem) 
 * 
 */ 
 @Test
@@ -122,7 +122,7 @@ public void testGetNewEquation() throws Exception {
 //TODO: Test goes here... 
 /* 
 try { 
-   Method method = Polynomial.getClass().getMethod("getNewEquation", String.class, cell.class, int.class); 
+   Method method = Polynomial.getClass().getMethod("getNewEquation", final.class, final.class, final.class); 
    method.setAccessible(true); 
    method.invoke(<Object>, <Parameters>); 
 } catch(NoSuchMethodException e) { 
@@ -134,7 +134,7 @@ try {
 
 /** 
 * 
-* Method: getExp(String key, String item) 
+* Method: getExp(final String key, final String item) 
 * 
 */ 
 @Test
@@ -142,7 +142,7 @@ public void testGetExp() throws Exception {
 //TODO: Test goes here... 
 /* 
 try { 
-   Method method = Polynomial.getClass().getMethod("getExp", String.class, String.class); 
+   Method method = Polynomial.getClass().getMethod("getExp", final.class, final.class); 
    method.setAccessible(true); 
    method.invoke(<Object>, <Parameters>); 
 } catch(NoSuchMethodException e) { 
@@ -154,7 +154,7 @@ try {
 
 /** 
 * 
-* Method: isExist(String str, String equation) 
+* Method: isExist(final String str, final String equation) 
 * 
 */ 
 @Test
@@ -162,7 +162,7 @@ public void testIsExist() throws Exception {
 //TODO: Test goes here... 
 /* 
 try { 
-   Method method = Polynomial.getClass().getMethod("isExist", String.class, String.class); 
+   Method method = Polynomial.getClass().getMethod("isExist", final.class, final.class); 
    method.setAccessible(true); 
    method.invoke(<Object>, <Parameters>); 
 } catch(NoSuchMethodException e) { 
@@ -174,7 +174,7 @@ try {
 
 /** 
 * 
-* Method: replace(String var, String number, String equation) 
+* Method: replace(final String var, final String number, final String equation) 
 * 
 */ 
 @Test
@@ -182,7 +182,7 @@ public void testReplace() throws Exception {
 //TODO: Test goes here... 
 /* 
 try { 
-   Method method = Polynomial.getClass().getMethod("replace", String.class, String.class, String.class); 
+   Method method = Polynomial.getClass().getMethod("replace", final.class, final.class, final.class); 
    method.setAccessible(true); 
    method.invoke(<Object>, <Parameters>); 
 } catch(NoSuchMethodException e) { 

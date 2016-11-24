@@ -1,4 +1,4 @@
-﻿package main;
+package main;
 
 import java.math.BigDecimal;
 import java.util.regex.Matcher;

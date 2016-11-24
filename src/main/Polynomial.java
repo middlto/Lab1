@@ -30,6 +30,7 @@ public class Polynomial {
      *
      * @param s 表达式输入
      */
+
     public void setEquation(final String s) {
         equation = s;
         isSet = true;
@@ -120,7 +121,7 @@ public class Polynomial {
             }
         }
         if (!cofX.equals("")) {
-            cofX = cofX.substring(1);   //删掉开头乘号
+            cofX = cofX.substring(1);
         }
         boolean find = false;
         int lenOfList;
@@ -141,6 +142,7 @@ public class Polynomial {
             c[lenOfList].cofN = c[lenOfList].cofN.add(cofN);
         }
     }
+
 
     /**.
      * 把表里的内容转化为字符串

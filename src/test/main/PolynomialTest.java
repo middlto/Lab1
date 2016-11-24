@@ -12,11 +12,11 @@ import java.lang.reflect.Method;
 * Polynomial Tester. 
 * 
 * @author <Authors name> 
-* @since <pre>十一锟斤拷 8, 2016</pre> 
+* @since <pre>十一月 7, 2016</pre> 
 * @version 1.0 
 */ 
-public class PolynomialTest {
-    Polynomial polynomial;
+public class PolynomialTest { 
+Polynomial polynomial;
 @Before
 public void before() throws Exception {
     polynomial = new Polynomial();
@@ -67,8 +67,8 @@ public void testSimplify() throws Exception {
     try {
         Method method = polynomial.getClass().getDeclaredMethod("simplify", String.class);
         method.setAccessible(true);
-        Object result = method.invoke(polynomial, "!simplifya=1a=1b=2");
-        Assert.assertEquals(null,result);
+        Object result = method.invoke(polynomial, "!simplifya=1");
+        Assert.assertEquals("1",result);
     }catch (Exception e) {
         e.printStackTrace();
     }
@@ -84,7 +84,7 @@ public void testDerivative() throws Exception {
     try {
         Method method = polynomial.getClass().getDeclaredMethod("derivative", String.class);
         method.setAccessible(true);
-        Object result = method.invoke(polynomial, "!d/da");
+        Object result = method.invoke(polynomial, "!d/db");
         Assert.assertEquals(null,result);
     }catch (Exception e) {
         e.printStackTrace();
